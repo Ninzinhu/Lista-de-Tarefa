@@ -22,4 +22,6 @@ form.addEventListener("submit", (submit) => {
   li.textContent = taskTitle; // <li>Tarefa2</li>
 
   todoListUl.appendChild(li);
+
+  taskTitleinput.value = "";
 });
