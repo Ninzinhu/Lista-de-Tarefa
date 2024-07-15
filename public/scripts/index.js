@@ -36,6 +36,10 @@ form.addEventListener("submit", (submit) => {
   // Adicionando um texto ao botão
   button.textContent = "Remover";
 
+  li.appendChild(input);
+  li.appendChild(span);
+  li.appendChild(button);
+
   todoListUl.appendChild(li);
 
   taskTitleinput.value = "";
