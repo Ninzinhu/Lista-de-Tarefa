@@ -18,7 +18,6 @@ form.addEventListener("submit", (submit) => {
   tasks.push({
     title: taskTitle,
     done: false,
-    
   });
 
   // Adicionando a nova tarefa no HTML
@@ -39,6 +38,17 @@ form.addEventListener("submit", (submit) => {
   const button = document.createElement("button");
   // Adicionando um texto ao botão
   button.textContent = "Remover";
+  button.addEventListener("click", (event) => {
+    const liToRemove = event.target.parentElement;
+
+    // Selecionando o span dentro da LI
+    const titleToRemove = liToRemove.querySelector("span").textContent;
+
+    
+    tasks.filter(t => t.title !== titleToRemove)
+
+    todoListUl.removeChild(liToRemove);
+  });
 
   li.appendChild(input);
   li.appendChild(span);
