@@ -19,6 +19,7 @@ form.addEventListener("submit", (submit) => {
     title: taskTitle,
     done: false,
   });
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 
   // Adicionando a nova tarefa no HTML
   const li = document.createElement("li");
@@ -49,8 +50,9 @@ form.addEventListener("submit", (submit) => {
           done: !t.done,
         };
       }
-      return t
+      return t;
     });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   });
 
   // Adicionando um Span vazio
@@ -60,6 +62,7 @@ form.addEventListener("submit", (submit) => {
 
   // Adicionando um botão
   const button = document.createElement("button");
+  
   // Adicionando um texto ao botão
   button.textContent = "Remover";
   button.addEventListener("click", (event) => {
@@ -71,6 +74,7 @@ form.addEventListener("submit", (submit) => {
     tasks.filter((t) => t.title !== titleToRemove);
 
     todoListUl.removeChild(liToRemove);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   });
 
   li.appendChild(input);
