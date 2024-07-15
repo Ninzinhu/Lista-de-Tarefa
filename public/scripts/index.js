@@ -38,11 +38,18 @@ function renderTaskOnHTML(taskTitle) {
     });
     localStorage.setItem("tasks", JSON.stringify(tasks));
   });
+  input.checked = done;
+
 
   // Adicionando um Span vazio
   const span = document.createElement("span");
   // Adicionando uma propriedade do Span (TaskTitle)
   span.textContent = taskTitle;
+
+  // task reload
+  if(done) {
+    span.style.textDecoration = "line-through";
+    } 
 
   // Adicionando um botão
   const button = document.createElement("button");
@@ -67,6 +74,18 @@ function renderTaskOnHTML(taskTitle) {
 
   todoListUl.appendChild(li);
 }
+
+window.onload = () => {
+  const taskOnLocalStorage = localStorage.getItem("tasks");
+
+  if (!taskOnLocalStorage) return;
+
+  tasks = JSON.parse(taskOnLocalStorage);
+
+  tasks.forEach((t) => {
+    renderTaskOnHTML(t.title);
+  });
+};
 
 form.addEventListener("submit", (submit) => {
   submit.preventDefault(); // Evita o comportamento padrão de recarregar a pagina ao submeter o form
