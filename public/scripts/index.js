@@ -15,7 +15,11 @@ form.addEventListener("submit", (submit) => {
   }
 
   // Adicionando a nova tarefa no Array de tasks
-  tasks.push(taskTitle);
+  tasks.push({
+    title: taskTitle,
+    done: false,
+    
+  });
 
   // Adicionando a nova tarefa no HTML
   const li = document.createElement("li");
