@@ -29,6 +29,30 @@ form.addEventListener("submit", (submit) => {
   // Adicionando uma propriedade ao input
   input.setAttribute("type", "checkbox");
 
+  input.addEventListener("change", (event) => {
+    liToToggle = event.target.parentElement;
+
+    const spanToToggle = liToToggle.querySelector("span");
+
+    const done = event.target.checked;
+    if (done) {
+      spanToToggle.style.textDecoration = "line-through";
+    } else {
+      spanToToggle.style.textDecoration = "none";
+    }
+
+    // Alterando Array
+    tasks = tasks.map((t) => {
+      if (t.title === spanToToggle.textContent) {
+        return {
+          title: t.title,
+          done: !t.done,
+        };
+      }
+      return t
+    });
+  });
+
   // Adicionando um Span vazio
   const span = document.createElement("span");
   // Adicionando uma propriedade do Span (TaskTitle)
@@ -44,8 +68,7 @@ form.addEventListener("submit", (submit) => {
     // Selecionando o span dentro da LI
     const titleToRemove = liToRemove.querySelector("span").textContent;
 
-    
-    tasks.filter(t => t.title !== titleToRemove)
+    tasks.filter((t) => t.title !== titleToRemove);
 
     todoListUl.removeChild(liToRemove);
   });
