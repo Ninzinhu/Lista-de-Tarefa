@@ -19,7 +19,22 @@ form.addEventListener("submit", (submit) => {
 
   // Adicionando a nova tarefa no HTML
   const li = document.createElement("li");
-  li.textContent = taskTitle; // <li>Tarefa2</li>
+
+  // Criando um input vazio
+  const input = document.createElement("input");
+
+  // Adicionando uma propriedade ao input
+  input.setAttribute("type", "checkbox");
+
+  // Adicionando um Span vazio
+  const span = document.createElement("span");
+  // Adicionando uma propriedade do Span (TaskTitle)
+  span.textContent = taskTitle;
+
+  // Adicionando um botão
+  const button = document.createElement("button");
+  // Adicionando um texto ao botão
+  button.textContent = "Remover";
 
   todoListUl.appendChild(li);
 
